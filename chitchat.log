@@ -1,0 +1,5 @@
+ERROR 2021/06/24 13:09:45 utils.go:102: pq: password authentication failed for user "iyke" Cannot create user
+ERROR 2021/06/24 13:10:00 utils.go:102: pq: password authentication failed for user "iyke" Cannot find user
+ERROR 2021/06/24 13:12:26 utils.go:102: pq: password authentication failed for user "iyke" Cannot find user
+ERROR 2021/06/24 13:12:44 utils.go:102: pq: password authentication failed for user "iyke" Cannot create user
+ERROR 2021/06/24 13:13:11 utils.go:102: pq: password authentication failed for user "iyke" Cannot find user
