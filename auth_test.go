@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -16,10 +17,19 @@ func Test_Get_Login(t *testing.T) {
 	mux.ServeHTTP(writer, request)
 
 	if writer.Code != 200 {
-		t.Errorf("Response code Is %v", writer.Code)
+		t.Fatalf("Response code Is %v", writer.Code)
 	}
+
 	body := writer.Body.String()
 	if strings.Contains(body, "Sign in") == false {
-		t.Errorf("Body does not contain Sign in")
+		t.Fatal("Body does not contain Sign in")
 	}
+}
+
+func Test_Exec(t *testing.T) {
+	mux := http.NewServeMux()                     // The multiplexer
+	files := http.FileServer(http.Dir("/public")) // Handler to serve files
+	// For all request URLs starting with /static/, strip off /static/ from the URL
+	log.Println(files)
+	mux.Handle("/static", http.StripPrefix("/public", files))
 }

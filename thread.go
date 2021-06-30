@@ -55,7 +55,7 @@ func readThread(writer http.ResponseWriter, request *http.Request) {
 		if err != nil {
 			generateHTML(writer, &thread, "layout", "public.navbar", "public.thread")
 		} else {
-			generateHTML(writer, &thread, "private.navbar", "private.thread")
+			generateHTML(writer, &thread, "layout", "private.navbar", "private.thread")
 		}
 	}
 }

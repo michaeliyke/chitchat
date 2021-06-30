@@ -24,9 +24,11 @@ var config Configuration
 var logger *log.Logger
 
 // Convinience function for printing to stdout
-/* func p(a ...interface{}) {
+var _ = p
+
+func p(a ...interface{}) {
 	fmt.Println(a...)
-} */
+}
 
 func init() {
 	loadConfig()
@@ -36,6 +38,8 @@ func init() {
 	}
 	logger = log.New(file, "INFO", log.Ldate|log.Ltime|log.Lshortfile)
 }
+
+var _ = loadConfig
 
 func loadConfig() {
 	file, err := os.Open("config.json")
@@ -51,12 +55,16 @@ func loadConfig() {
 }
 
 // Convinience function to redirect to the error message page
+var _ = error_message
+
 func error_message(writer http.ResponseWriter, request *http.Request, msg string) {
 	url := []string{"/err?msg=", msg}
 	http.Redirect(writer, request, strings.Join(url, ""), http.StatusFound)
 }
 
 // Checks if the user is logged in and has a session, if not err is not nil
+var _ = session
+
 func session(writer http.ResponseWriter, request *http.Request) (sess data.Session, err error) {
 	cookie, err := request.Cookie("_cookie")
 	if err == nil {
@@ -70,6 +78,8 @@ func session(writer http.ResponseWriter, request *http.Request) (sess data.Sessi
 
 // Parse HTML templates
 // Pass in a list of file names, and get a template
+var _ = parseTemplateFiles
+
 func parseTemplateFiles(filenames ...string) (t *template.Template) {
 	var files []string
 	t = template.New("layout")
@@ -80,6 +90,8 @@ func parseTemplateFiles(filenames ...string) (t *template.Template) {
 	t = template.Must(t.ParseFiles(files...))
 	return
 }
+
+var _ = generateHTML
 
 func generateHTML(writer http.ResponseWriter, data interface{}, filenames ...string) {
 	var files []string
@@ -92,15 +104,21 @@ func generateHTML(writer http.ResponseWriter, data interface{}, filenames ...str
 }
 
 // For logging
-/* func info(args ...interface{}) {
+var _ = info
+
+func info(args ...interface{}) {
 	logger.SetPrefix("INFO ")
 	logger.Println(args...)
-} */
+}
+
+var _ = danger
 
 func danger(args ...interface{}) {
 	logger.SetPrefix("ERROR ")
 	logger.Println(args...)
 }
+
+var _ = warning
 
 func warning(args ...interface{}) {
 	logger.SetPrefix("WARNING ")
@@ -108,7 +126,8 @@ func warning(args ...interface{}) {
 }
 
 // vsersion
-/* func version() string {
+var _ = version
+
+func version() string {
 	return "O.1"
 }
-*/

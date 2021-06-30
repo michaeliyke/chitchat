@@ -23,6 +23,38 @@ type Session struct {
 	CreatedAt time.Time
 }
 
+var Usrs = []User{
+	{Name: "Peter Jones",
+		Email:    "peter@gmail.com",
+		Password: "Peter_pass",
+	},
+	{
+		Name:     "John Smith",
+		Email:    "john@gmail.com",
+		Password: "john_pass",
+	},
+	{
+		Name:     "Magareth Doe",
+		Email:    "magareth@gmail.com",
+		Password: "aka1",
+	},
+	{
+		Name:     "John Doe",
+		Email:    "jdoe@gmail.com",
+		Password: "aka2",
+	},
+	{
+		Name:     "Utazi Doe",
+		Email:    "utazi@gmail.com",
+		Password: "aka3",
+	},
+	{
+		Name:     "Maxwell Udumene",
+		Email:    "mene.udu@yahoo.com",
+		Password: "udu4life",
+	},
+}
+
 // Create a new session for an existing user
 func (user *User) CreateSession() (session Session, err error) {
 	statement := "INSERT INTO sessions (uuid, email, user_id, created_at) values ($1, $2, $3, $4) returning id, uuid, email, user_id, created_at"
@@ -60,7 +92,7 @@ func (session *Session) Check() (valid bool, err error) {
 
 // Delete session from database
 func (session *Session) DeleteByUUID() (err error) {
-	statement := "DELETE FROM sessions uuid = $1"
+	statement := "DELETE FROM sessions WHERE uuid = $1"
 	stmt, err := Db.Prepare(statement)
 	if err != nil {
 		return
@@ -80,8 +112,10 @@ func (session *Session) User() (user User, err error) {
 
 // Delete all sessions from database
 func SessionDeleteAll() (err error) {
-	statement := "DELETE FROM sessions"
-	_, err = Db.Exec(statement)
+	_, err = Db.Exec("DELETE FROM sessions")
+	throw(err, "could not delete sessions")
+	_, err = Db.Exec("ALTER SEQUENCE sessions_id_seq RESTART WITH 1")
+	throw(err, "sequence could not be reset on sessions table")
 	return
 }
 
@@ -98,7 +132,6 @@ func (user *User) Create() (err error) {
 	defer stmt.Close()
 	// Use QueryRow to return a row and scan the returned id into the User struct
 	err = stmt.QueryRow(createUUID(), user.Name, user.Email, Encrypt(user.Password), time.Now()).Scan(&user.Id, &user.Uuid, &user.CreatedAt)
-	fmt.Println(user)
 	return
 }
 
@@ -115,7 +148,7 @@ func (user *User) Delete() (err error) {
 
 // Update user information in the database
 func (user *User) Update() (err error) {
-	statement := "UPDATE users SET name = $2, email = $3, WHERE id = $1"
+	statement := "UPDATE users SET name = $2, email = $3 WHERE id = $1"
 	stmt, err := Db.Prepare(statement)
 	if err != nil {
 		return
@@ -127,10 +160,10 @@ func (user *User) Update() (err error) {
 
 // Delete all users from database
 func UserDeleteAll() (err error) {
-	statement := "DELETE FROM users"
-	_, err = Db.Exec(statement)
-	Db.Exec("ALTER SEQUENCE seq RESTART WITH 1")
-	Db.Exec("UPDATE foo SET id = DEFAULT")
+	_, err = Db.Exec("DELETE FROM users")
+	throw(err, "could not delete users")
+	_, err = Db.Exec("ALTER SEQUENCE users_id_seq RESTART WITH 1")
+	throw(err, "sequence could not be reset on users table")
 	return
 }
 
@@ -152,7 +185,7 @@ func getLastId() (id interface{}, err error) {
 
 // Gets all users from the database a<d returns it
 func Users() (users []User, err error) {
-	rows, err := Db.Query("SELECT id, uuid, name, email, passowrd, created_at FROM users")
+	rows, err := Db.Query("SELECT id, uuid, name, email, password, created_at FROM users")
 	if err != nil {
 		return
 	}
@@ -171,7 +204,7 @@ func Users() (users []User, err error) {
 // Get a single user given the email
 func UserByEmail(email string) (user User, err error) {
 	user = User{}
-	err = Db.QueryRow("SELECT id, uuid, name, email password, created_at FROM users WHERE email = $1", email).
+	err = Db.QueryRow("SELECT id, uuid, name, email, password, created_at FROM users WHERE email = $1", email).
 		Scan(&user.Id, &user.Uuid, &user.Name, &user.Email, &user.Password, &user.CreatedAt)
 	return
 }
@@ -179,7 +212,7 @@ func UserByEmail(email string) (user User, err error) {
 // Get a single user given the email
 func UserByUUID(uuid string) (user User, err error) {
 	user = User{}
-	err = Db.QueryRow("SELECT id, uuid, name, email password, created_at FROM users WHERE uuid = $1", uuid).
+	err = Db.QueryRow("SELECT id, uuid, name, email, password, created_at FROM users WHERE uuid = $1", uuid).
 		Scan(&user.Id, &user.Uuid, &user.Name, &user.Email, &user.Password, &user.CreatedAt)
 	return
 }

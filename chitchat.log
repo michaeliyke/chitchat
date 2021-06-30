@@ -3,3 +3,23 @@ ERROR 2021/06/24 13:10:00 utils.go:102: pq: password authentication failed for u
 ERROR 2021/06/24 13:12:26 utils.go:102: pq: password authentication failed for user "iyke" Cannot find user
 ERROR 2021/06/24 13:12:44 utils.go:102: pq: password authentication failed for user "iyke" Cannot create user
 ERROR 2021/06/24 13:13:11 utils.go:102: pq: password authentication failed for user "iyke" Cannot find user
+WARNING 2021/06/29 21:29:44 utils.go:107: <nil> Failed to get cookie
+WARNING 2021/06/29 21:31:03 utils.go:107: <nil> Failed to get cookie
+ERROR 2021/06/29 21:32:04 utils.go:102: sql: no rows in result set Cannot find user
+ERROR 2021/06/29 21:32:48 utils.go:102: sql: no rows in result set Cannot find user
+ERROR 2021/06/29 21:32:55 utils.go:102: sql: no rows in result set Cannot find user
+ERROR 2021/06/29 21:33:34 utils.go:102: sql: no rows in result set Cannot find user
+ERROR 2021/06/30 07:52:24 utils.go:102: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
+ERROR 2021/06/30 07:52:53 utils.go:102: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
+WARNING 2021/06/30 08:35:41 utils.go:107: <nil> Failed to get cookie
+ERROR 2021/06/30 09:38:09 utils.go:102: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
+ERROR 2021/06/30 09:38:21 utils.go:102: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
+ERROR 2021/06/30 09:39:14 utils.go:102: pq: duplicate key value violates unique constraint "users_email_key" Cannot create user
+ERROR 2021/06/30 09:39:20 utils.go:102: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
+ERROR 2021/06/30 09:39:48 utils.go:102: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
+WARNING 2021/06/30 13:52:30 utils.go:125: <nil> Failed to get cookie
+ERROR 2021/06/30 13:53:20 utils.go:118: sql: no rows in result set Cannot find user
+ERROR 2021/06/30 13:53:37 utils.go:118: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
+ERROR 2021/06/30 13:54:01 utils.go:118: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
+ERROR 2021/06/30 13:54:59 utils.go:118: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
+ERROR 2021/06/30 13:55:16 utils.go:118: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
