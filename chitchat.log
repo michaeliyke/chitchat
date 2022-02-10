@@ -23,3 +23,27 @@ ERROR 2021/06/30 13:53:37 utils.go:118: pq: duplicate key value violates unique 
 ERROR 2021/06/30 13:54:01 utils.go:118: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
 ERROR 2021/06/30 13:54:59 utils.go:118: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
 ERROR 2021/06/30 13:55:16 utils.go:118: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
+WARNING 2021/07/01 10:42:51 utils.go:125: <nil> Failed to get cookie
+WARNING 2021/07/01 10:50:36 utils.go:125: <nil> Failed to get cookie
+WARNING 2021/07/01 10:58:23 utils.go:125: <nil> Failed to get cookie
+ERROR 2021/07/01 10:58:43 utils.go:118: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
+ERROR 2021/07/01 10:59:12 utils.go:118: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
+ERROR 2021/07/01 10:59:27 utils.go:118: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
+ERROR 2021/07/01 10:59:55 utils.go:118: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
+ERROR 2021/07/01 11:00:24 utils.go:118: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
+ERROR 2021/07/01 11:01:05 utils.go:118: sql: no rows in result set Cannot find user
+ERROR 2021/07/01 11:01:35 utils.go:118: sql: no rows in result set Cannot find user
+ERROR 2021/07/01 11:01:41 utils.go:118: sql: no rows in result set Cannot find user
+ERROR 2021/07/01 11:01:48 utils.go:118: sql: no rows in result set Cannot find user
+ERROR 2021/07/01 11:01:55 utils.go:118: sql: no rows in result set Cannot find user
+ERROR 2021/07/01 11:02:12 utils.go:118: sql: no rows in result set Cannot find user
+ERROR 2021/07/01 11:02:23 utils.go:118: sql: no rows in result set Cannot find user
+ERROR 2021/07/01 11:03:26 utils.go:118: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
+ERROR 2021/07/01 11:08:14 utils.go:118: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
+ERROR 2021/07/01 11:10:05 utils.go:118: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
+ERROR 2021/07/01 11:10:36 utils.go:118: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
+ERROR 2021/07/01 11:24:36 utils.go:118: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
+ERROR 2021/07/01 11:28:18 utils.go:118: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
+ERROR 2021/07/01 11:28:54 utils.go:118: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
+ERROR 2021/07/01 11:29:17 utils.go:118: pq: duplicate key value violates unique constraint "sessions_email_key" Cannot create session
+WARNING 2021/07/01 11:29:32 utils.go:125: <nil> Failed to get cookie
